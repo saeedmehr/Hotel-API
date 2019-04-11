@@ -5,7 +5,7 @@ In this case, to keep the exercise small, an application has to be built that im
 
 ## Run server 
 To run the website follow the steps mentioned below:
-1. Install 'python3' from (https://www.python.org/downloads/release/python-372/)[Python Website]
+1. Install 'python3' from [Python Website]
 2. To start with, you should install 'virtualenv' (for installation guide visit [virtualenv]) 
 3. Create a virtual environment in the project directory using the following command :
              virtualenv venv
