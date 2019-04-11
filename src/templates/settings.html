@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+    Remote Fetch
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="row">
+            Choose the data format :
+            <form class="col s12" action="" method="post"> {% csrf_token %}
+                <div class="row">
+                    <label>
+                        <input name="title" type="radio" id="city" value="city" required/>
+                        <span>City</span>
+                    </label><br>
+                    <label>
+                        <input name="title" type="radio" id="hotel" value="hotel"/>
+                        <span>Hotel</span>
+                    </label><br>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">http</i>
+                        <input id="url" type="text" class="validate" name="url" autocomplete="on" required>
+                        <label for="url">URL</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="username" type="text" class="validate" name="username" autocomplete="on">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">https</i>
+                        <input id="password" type="password" class="validate" name="password" autocomplete="on">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="switch">
+                    <p>Save for daily check:<br>
+                        <label>
+                            Off
+                            <input type="checkbox" name="save" value="on">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                </div>
+                </p>
+                <input type='submit' class='btn btn-default right blue' value='Start'/>
+            </form>
+        </div>
+        <br>
+    </div>
+{% endblock %}

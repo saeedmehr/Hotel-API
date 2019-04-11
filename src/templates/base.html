@@ -1,0 +1,126 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/icon.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>{% block title %}{% endblock %} - Hotels</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- CSS  -->
+    <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'css/icons.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/jquery-ui.min.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    {% block extraCss %}
+    {% endblock %}
+
+    <!--  Scripts-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extraJs %}
+    {% endblock %}
+    {% block extraHead %}{% endblock %}
+</head>
+<body class="grey lighten-2{% block extraBodyAttr %}{% endblock %}">
+{% block body %}
+    {% block nav %}
+        <nav class="blue darken-4 white-text">
+            <div class="nav-wrapper container">
+                <a href="{% url 'main' %}" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    {% if user.is_authenticated %}
+                        <li>
+                            {{ user.username }}
+                        </li>
+                    {% endif %}
+                    <li><a class="left" href="{% url 'main' %}"><i class="material-icons white-text">dashboard</i></a>
+                    </li>
+                    <li><a class="left" href="{% url 'search' %}"><i class="material-icons white-text">search</i></a>
+                    </li>
+                    <li><a class="left" href="{% url 'setting-csv' %}"><i class="material-icons white-text">cloud_download</i></a>
+                    </li>
+                    <li><a class="left" href="{% url 'import-csv' %}"><i
+                            class="material-icons white-text">file_upload</i></a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a class="right" href="{% url 'logout' %}"><i
+                                    class="material-icons white-text">exit_to_app</i></a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="right" href="{% url 'admin:login' %}"><i class="material-icons white-text">account_circle</i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <h5 class="blue-text text-darken-4"> Site Name :</h5>
+            <li><a href="{% url 'main' %}">Home</a></li>
+            <li><a href="{% url 'search' %}">Search</a></li>
+            <li><a href="{% url 'setting-csv' %}">Cloud import</a></li>
+            <li><a href="{% url 'import-csv' %}">Local import</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    {% endblock %}
+    <div class="main-content">
+        {% include "messages_display.html" %}
+        {% block content %}No Content{% endblock %}
+    </div>
+
+    {% block footer %}
+        <footer class="page-footer blue darken-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col l9 s12">
+                        <h5 class="white-text">About us :</h5>
+                        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, in choro reprimique assueverit
+                            qui, atomorum oportere recteque an sea. Cu sadipscing disputando eos, mel nibh dolore
+                            propriae eu, cu has dolorum inciderint. Mea cu quaeque meliore inimicus. Vix ad indoctum
+                            constituto. Erat movet nostrum pro et. Cu ullum prompta his.</p>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Pages :</h5>
+                        <ul class="white-text">
+                            <li><a class="left white-text" href="{% url 'main' %}">Home</a></li>
+                            <br>
+                            <li><a class="left white-text" href="{% url 'search' %}">Search</a></li>
+                            <br>
+                            <li><a class="left white-text" href="{% url 'setting-csv' %}">Cloud import</a></li>
+                            <br>
+                            <li><a class="left white-text" href="{% url 'import-csv' %}">Local import</a></li>
+                            <br>
+                            <li><a class="left white-text" href="{% url 'logout' %}">Logout</a></li>
+                            <br>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2019
+                    <a class="grey-text text-lighten-4 right" href="#!"></a>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(
+            M.AutoInit()
+        );
+    </script>
+{% endblock %}
+</body>
+</html>

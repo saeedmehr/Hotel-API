@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if cities|length != 0 %}
+
+                <div class="col s3">
+                    <form action="" method="post"> {% csrf_token %}
+                        {% for city in cities %}
+                            <p>
+                                <label>
+                                    <input type="checkbox" id="{{ city.abbrev }}" name="{{ city.abbrev }}"
+                                            {% if city.abbrev in checkedCity %}
+                                           checked
+                                            {% endif %}>
+                                    <span for="{{ city.abbrev }}">{{ city.name }}</span>
+                                </label>
+                            </p>
+                        {% endfor %}
+                        <input type='submit' class='btn btn-default blue' value='Search'/>
+                    </form>
+                </div>
+
+                <div class="col s9">
+                    {% if hotels|length == 0 and checkedCity|length != 0 %}
+                        <h4 class="center grey-text"> No hotel to show :(</h4>
+                    {% elif checkedCity|length == 0 %}
+                        <h4 class="center grey-text"> Please select a city</h4>
+                    {% endif %}
+                    {% for hotel in hotels %}
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">hotel</i>{{ hotel.name }}
+                                </div>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h4 class="center grey-text"> Nothing to show</h4>
+                <div class="center">
+                    <i class="material-icons grey-text medium">mood_bad</i>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

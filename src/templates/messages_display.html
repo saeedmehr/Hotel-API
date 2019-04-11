@@ -1,0 +1,24 @@
+{% if messages %}
+    <div class='messages'>
+        {% if messages|length <= 3 %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><span
+                            class="new badge{% if message.tags == WARNING %}
+                    red
+                {% endif %}" data-badge-caption="">{% if "html_safe" in message.tags %}{{ message|safe }}{% else %}
+                        {{ message }}{% endif %}</span></li>
+                {% endfor %}
+            </ul>
+        {% elif  messages|length > 3 %}
+            {% for message in messages %}
+            {% endfor %}
+            <ul class="messages">
+                <li><span class="new badge {% if message.tags == WARNING %}
+                    red
+                {% endif %}" data-badge-caption="">Too many errors to display ({{ messages|length }})</span></li>
+            </ul>
+        {% endif %}
+
+    </div>
+{% endif %}
