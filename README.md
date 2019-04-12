@@ -1,7 +1,8 @@
 # Hotel-API
 Case: Integrating third parties
 integrating third parties in a piece of software. These third parties expose data or API’s which are used in the services that we offer our clients.
-In this case, to keep the exercise small, an application has to be built that imports CSV hotel data. Of course CSV data is flat, while in the case of data models in Django one wants to make use of relations. So during the import of the data those relations have to be restored. Then in the end a small front- end application has to be built that allows users to lookup hotel data. 
+In this case, to keep the exercise small, an application has to be built that imports CSV hotel data. Of course CSV data is flat, while in the case of data models in Django one wants to make use of relations. So during the import of the data those relations have to be restored.
+Then in the end a small front- end application has to be built that allows users to lookup hotel data. 
 
 ## Run server 
 To run the website follow the steps mentioned below:
@@ -22,9 +23,11 @@ To run the website follow the steps mentioned below:
              Python manage.py runserver
 9. Finally, you need to open your browser and go to “127.0.0.1.:8080”
 Keep in mind as it’s a proof-of-concept, the debugging mode is still on and you must turn it off in the real-world deployment. Furthermore, you should take care of SECERT_KEY in production.
+
 ## Run Tests
 To run the unit tests, go through steps 1-5 from the above instruction (if you haven’t done it yet) and run ​py.test​ in the your terminal. This command will run every provided unit tests and shows the results of its success or failure.
 In order to see the unit test coverage, you can open ​index.html​ file in ​htmlcov​ directory located in the project directory via your browser. It’s will show the percentage of the unit test coverage per file.
+
 ## Crontab daily import automation
 For importing data over authenticated http protocol on daily basis, do the following steps:
 1. open your terminal and run the this command
