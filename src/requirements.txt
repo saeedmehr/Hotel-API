@@ -3,7 +3,7 @@ attrs==19.1.0
 certifi==2018.11.29
 chardet==3.0.4
 coverage==4.5.2
-Django==2.1.7
+Django==2.2.13
 Faker==0.9.1
 idna==2.8
 mixer==6.1.3
